@@ -12,8 +12,7 @@
     <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.1/css/all.min.css" integrity="sha512-ioRJH7yXnyX+7fXTQEKPULWkMn3CqMcapK0NNtCN8q//sW7ZeVFcbMJ9RvX99TwDg6P8rAH2IqUSt2TLab4Xmw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9489624253487221"
-     crossorigin="anonymous"></script>
+
 
     <style>
         *{
@@ -71,7 +70,7 @@ console.log("{{ Auth::user() }}")
 
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}" ></script>
     <script src="{{ asset('frontend/js/bootstrap.min.js') }}" ></script>
-    <script src="{{ asset('js/frontend.js?ver=2.6') }}"></script>
+    <script src="{{ asset('js/frontend.js?ver=1.0.0') }}"></script>
 
 
 
