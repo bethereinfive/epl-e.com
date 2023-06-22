@@ -21,7 +21,7 @@
                                     <div data-v-c1501c16="">
                                         <div data-v-c1501c16="" data-validate="Enter username" class="wrap-input100 validate-input"><input data-v-c1501c16="" type="text" name="mobile" v-model="form.mobile" placeholder="Mobile Number" class="input100" /></div>
                                         <div data-v-c1501c16="" data-validate="Enter password" class="wrap-input100 validate-input">
-                                            <i data-v-c1501c16="" class="fa fa-eye" aria-hidden="true" style="position: absolute; right: 20px; top: 13px;"></i>
+                                            <!-- <i data-v-c1501c16="" class="fa fa-eye" aria-hidden="true" style="position: absolute; right: 20px; top: 13px;"></i> -->
                                             <input data-v-c1501c16="" type="password" name="pass" v-model="form.password" placeholder="Password" class="input100" />
                                         </div>
                                     </div>

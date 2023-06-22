@@ -2978,18 +2978,7 @@ var render = function render() {
       "data-v-c1501c16": "",
       "data-validate": "Enter password"
     }
-  }, [_c("i", {
-    staticClass: "fa fa-eye",
-    staticStyle: {
-      position: "absolute",
-      right: "20px",
-      top: "13px"
-    },
-    attrs: {
-      "data-v-c1501c16": "",
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" "), _c("input", {
+  }, [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
