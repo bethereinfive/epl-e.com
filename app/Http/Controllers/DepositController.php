@@ -118,7 +118,9 @@ class DepositController extends Controller
     public function store(Request $request)
     {
         $method = $request->method;
-        $methodData = Gateway::where(['name' => $method])->first();
+
+        $methodData = Gateway::find($method);
+
         $data = $request->all();
         $date = date("Y-m-d");
 

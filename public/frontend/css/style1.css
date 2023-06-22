@@ -336,7 +336,7 @@ list-style: none;
 }
 
 .form h2{
-	color: #6a98ff;
+	color: #E30086;
 	font-size: 22px;
 	margin-bottom: 1.3rem;
 }
@@ -403,7 +403,7 @@ input:focus {
 .form .submit {
 	width: 100%;
 	font-size: 15px;
-    background: #2326bb;
+    background: #E30086;
 	color: #fff;
 	border-radius: 9px;
 	text-align: center;
@@ -416,7 +416,7 @@ input:focus {
 	position: relative;
 	font-size: 15px;
 	font-weight: 600;
-	color: #6a98ff;
+	color: #E30086;
 	margin: 0;
 	width: 100%;
 	text-align: center;
@@ -459,7 +459,7 @@ input:focus {
 #bigbg .form a.reg {
     background: none;
     color: #fff;
-    background: green;
+    background: #3F8ED3;
     padding: 8px 1px;
     border-radius: 6px;
   }

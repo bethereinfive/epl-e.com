@@ -82,7 +82,7 @@ padding-top: 9px;
 }
 
 .task{
-	background: rgb(14, 174, 47) none repeat scroll 0% 0%;
+	background: #E30086;
     padding: 3px;
 }
 .task h4 {
@@ -118,10 +118,10 @@ padding-top: 9px;
     width: 100%;
 }
 .task span {
-	background: rgb(219, 57, 85) none repeat scroll 0% 0%;
+	background: #3F8ED3;
 	color: #fff;
 	padding: 4px 7px;
-	 margin-top: 3px;
+	margin-top: 3px;
 	font-size: 11px;
 	display: block;
 }
@@ -206,7 +206,7 @@ padding-top: 9px;
 } */
 
 #listmenu {
-    background: linear-gradient(#b03d3d00, #ffffff5e),url("../img/mainbg2.png");
+    background: linear-gradient(#b03d3d00, #ffffff5e);
       background-position-x: 0%, 0%;
       background-position-y: 0%, 0%;
       background-repeat: repeat, repeat;

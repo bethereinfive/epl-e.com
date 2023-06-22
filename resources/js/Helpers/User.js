@@ -60,6 +60,20 @@ class User {
         dates.push(today)
         today =  hr24;
         dates.push(today)
+
+        // 10
+        today =  yyyy;
+        dates.push(today)
+        // 11
+        today =  mm;
+        dates.push(today)
+        // 12
+        today =  dd;
+        dates.push(today)
+
+
+
+
         return dates;
     }
     responseAfterLogin(res) {

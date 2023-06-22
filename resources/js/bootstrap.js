@@ -27,3 +27,14 @@ window.RootUrl = window.location.origin;
 // window.ASSETURL = '/public/';
 // window.ASSETURL = '/';
 
+
+
+
+import Popups from './backend/components/users/gt5g/confirmPopup';
+Vue.component('Popups', Popups);
+
+import Preload from './backend/components/users/gt5g/preLoad';
+Vue.component('Preload', Preload);
+
+import message from './backend/components/users/gt5g/message';
+Vue.component('Message', message);

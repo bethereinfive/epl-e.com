@@ -55,8 +55,22 @@ let license = require('./components/users/license.vue').default;
 let teamdetails = require('./components/users/teamdetails.vue').default;
 let teamMember = require('./components/users/teamMember.vue').default;
 let teamIntro = require('./components/users/teamIntro.vue').default;
-let Recharge = require('./components/users/Recharge.vue').default;
-let RechargePage = require('./components/users/RechargePage.vue').default;
+
+
+
+
+// let Recharge = require('./components/users/Recharge.vue').default;
+// let RechargePage = require('./components/users/RechargePage.vue').default;
+
+let Recharge = require('./components/users/recharge/RechargeAmount.vue').default;
+let rechargepage = require('./components/users/recharge/RechargePage.vue').default;
+let rechargepageUsd = require('./components/users/recharge/rechargepageUsd.vue').default;
+let rechargecheckout = require('./components/users/recharge/rechargecheckout.vue').default;
+let rechargecheckoutUsd = require('./components/users/recharge/rechargecheckoutUsd.vue').default;
+let rechargesuccess = require('./components/users/recharge/rechargesuccess.vue').default;
+let rechargeFailed = require('./components/users/recharge/rechargeFailed.vue').default;
+
+
 let Withdraw = require('./components/users/Withdraw.vue').default;
 let invite = require('./components/users/invite.vue').default;
 let information = require('./components/users/information.vue').default;
@@ -159,8 +173,22 @@ export const routes = [
   { path:  `${prefixuser}/teamMember`, component: teamMember, name:'teamMember',meta: { layout: blanklayout } },
   { path:  `${prefixuser}/teamIntro`, component: teamIntro, name:'teamIntro',meta: { layout: blanklayout } },
 
-  { path:  `${prefixuser}/Recharge`, component: Recharge, name:'Recharge',meta: { layout: blanklayout } },
-  { path:  `${prefixuser}/Recharge/:method`, component: RechargePage, name:'RechargePage',meta: { layout: blanklayout } },
+
+
+
+//   { path:  `${prefixuser}/Recharge`, component: Recharge, name:'Recharge',meta: { layout: blanklayout } },
+//   { path:  `${prefixuser}/Recharge/:method`, component: RechargePage, name:'RechargePage',meta: { layout: blanklayout } },
+
+
+{ path:  `${prefixuser}/Recharge`, component: Recharge, name:'Recharge',meta: { layout: blanklayout } },
+
+{ path:  `${prefixuser}/onepay/Recharge`, component: rechargepage, name:'rechargepage',meta: { layout: blanklayout } },
+{ path:  `${prefixuser}/usd/Recharge`, component: rechargepageUsd, name:'rechargepageUsd',meta: { layout: blanklayout } },
+{ path:  `${prefixuser}/onepay/checkout`, component: rechargecheckout, name:'rechargecheckout',meta: { layout: blanklayout } },
+{ path:  `${prefixuser}/usd/checkout`, component: rechargecheckoutUsd, name:'rechargecheckoutUsd',meta: { layout: blanklayout } },
+{ path:  `${prefixuser}/onepay/patment/success`, component: rechargesuccess, name:'rechargesuccess',meta: { layout: blanklayout } },
+{ path:  `${prefixuser}/onepay/patment/failed`, component: rechargeFailed, name:'rechargeFailed',meta: { layout: blanklayout } },
+
 
   { path:  `${prefixuser}/Withdraw`, component: Withdraw, name:'Withdraw',meta: { layout: blanklayout } },
   { path:  `${prefixuser}/invite`, component: invite, name:'invite',meta: { layout: blanklayout } },

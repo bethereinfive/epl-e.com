@@ -29,6 +29,7 @@
         "@fingerprintjs/fingerprintjs-pro-vue-v2": "^1.0.4",
         "bootstrap-vue": "^2.22.0",
         "chart.js": "^3.9.1",
+        "clipboard": "^2.0.11",
         "datatables.net": "^1.12.1",
         "datatables.net-autofill-dt": "^2.4.0",
         "datatables.net-bs4": "^1.12.1",

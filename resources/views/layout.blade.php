@@ -27,10 +27,31 @@
     {{-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css">
     <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-<style>
+    <style>
+        *{
+            --van-cell-group-background-color:white;
+             --van-button-default-background-color:white;
+             --defaltColor:#E30086;
+             --defaltColor2:#3F8ED3;
+             --whiteColor:white;
+        }
 
 
-</style>
+        .defaltColor{
+            color: var(--defaltColor) !important;
+        }
+        .whiteColor{
+            color: var(--whiteColor) !important;
+        }
+
+        .defaltColorBg {
+                background: var(--defaltColor) !important;
+            }
+
+.video-cntainer {
+
+}
+    </style>
     {{-- <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.12.1/css/dataTables.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.semanticui.min.css"> --}}

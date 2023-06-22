@@ -15,6 +15,15 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9489624253487221"
      crossorigin="anonymous"></script>
 
+    <style>
+        *{
+            --van-cell-group-background-color:white;
+             --van-button-default-background-color:white;
+             --defaltColor:#E30086;
+        }
+
+
+    </style>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>

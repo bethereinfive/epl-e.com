@@ -6,11 +6,11 @@
     <div class="form login">
         <div class="text-center">
 
-            <img style="width: 46px;float: center;" :src="$asseturl+'frontend/img/logos.png'" alt="">
+            <img style="width: 100px;float: center;" :src="$asseturl+'frontend/img/logos.png'" alt="">
         </div>
 
         <h2 class="text-center" style="font-size:30px">Welcome</h2>
-        <h2 class="text-center mb-5">Dream Land</h2>
+        <h2 class="text-center mb-5">EPL</h2>
         <form @submit.prevent='login'>
            <div class="input"> <input type="tel" placeholder="Enter phone number" v-model="form.mobile" required><span><img :src="$asseturl+'frontend/img/user.png'" ></span></div>
            <div class="input"> <input type="password" placeholder="Enter Password" v-model="form.password" required><span><img :src="$asseturl+'frontend/img/pass.png'" ></span></div>

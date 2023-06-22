@@ -144,10 +144,9 @@ export default {
                 user:{}
             },
             slider:[
-            this.$asseturl+'frontend/img/Daily-Task-Commisson-Chart.png',
-            this.$asseturl+'frontend/img/Refar-Deposit-Bonus.png',
-            this.$asseturl+'frontend/img/Refar-Task-income.png',
-            this.$asseturl+'frontend/img/Self-Deposit.png'
+            this.$asseturl+'frontend/img/banner1.jpg',
+            this.$asseturl+'frontend/img/banner2.jpg',
+
             ]
         }
     },

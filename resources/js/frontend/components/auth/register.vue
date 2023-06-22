@@ -5,11 +5,11 @@
 
                     <div class="text-center">
 
-            <img style="width: 46px;float: center;" :src="$asseturl+'frontend/img/logos.png'" alt="">
+            <img style="width: 100px;float: center;" :src="$asseturl+'frontend/img/logos.png'" alt="">
         </div>
 
         <h2 class="text-center" style="font-size:30px">Register</h2>
-        <h2 class="text-center mb-5">Dream Land</h2>
+        <h2 class="text-center mb-5">EPL</h2>
             <form @submit.prevent='register'>
                 <!-- <input type="text" v-model="form.country" placeholder="Please Your Country" required> -->
 

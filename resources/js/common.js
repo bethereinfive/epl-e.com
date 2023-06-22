@@ -10,6 +10,13 @@ export default {
     },
     methods: {
 
+        notifiyGlobal(mess){
+            this.Messageactive = true
+            this.Message = mess;
+            setTimeout(() => {
+                this.Messageactive = false
+            }, 1000);
+        },
         async callApi(method, url, dataObj ){
             try {
               return await axios({
@@ -32,7 +39,9 @@ export default {
                 return e.response
             }
         },
-
+        dateformatglobal(date=''){
+            return  User.dateformat(date);
+         },
         async settingFun(){
 
 
