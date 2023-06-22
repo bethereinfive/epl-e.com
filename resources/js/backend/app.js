@@ -94,6 +94,14 @@ import loader from "vue-ui-preloader";
 Vue.use(loader);
 
 
+
+
+import Multiselect from 'vue-multiselect'
+Vue.component('multiselect', Multiselect)
+
+
+
+
 // import { VueEditor, Quill } from "vue2-editor";
 // Vue.component('vue-editor', VueEditor);
 

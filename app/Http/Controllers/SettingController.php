@@ -14,7 +14,11 @@ class SettingController extends Controller
      */
     public function index()
     {
-       return Setting::all();
+       return  Setting::first();
+
+
+
+
     }
 
     /**
@@ -35,7 +39,10 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->except(['bkash','nagad','rocket']);
+        $data['bkash'] = json_encode($request->bkash);
+        $data['nagad'] = json_encode($request->nagad);
+        $data['rocket'] = json_encode($request->rocket);
         return Setting::create($data);
     }
 
@@ -47,7 +54,11 @@ class SettingController extends Controller
      */
     public function show(Setting $setting)
     {
-        return $setting;
+        $data =  $setting;
+        $data['bkash'] = json_decode($data->bkash);
+        $data['nagad'] = json_decode($data->nagad);
+        $data['rocket'] = json_decode($data->rocket);
+        return $data;
     }
 
     /**
@@ -70,7 +81,16 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
-        $data = $request->all();
+
+        $data = $request->except(['bkash','nagad','rocket']);
+
+     $data['bkash'] = json_encode($request->bkash);
+     $data['nagad'] = json_encode($request->nagad);
+     $data['rocket'] = json_encode($request->rocket);
+
+
+
+
         return $setting->update($data);
     }
 
