@@ -220,11 +220,11 @@ this.form.country = '+880'
 
 
 
-            const visitorData = await this.$fpjs.getVisitorData({
-                extendedResult: true
-            });
+            // const visitorData = await this.$fpjs.getVisitorData({
+            //     extendedResult: true
+            // });
 
-            this.form['visitorId'] = visitorData.visitorId;
+            // this.form['visitorId'] = visitorData.visitorId;
 
 
 

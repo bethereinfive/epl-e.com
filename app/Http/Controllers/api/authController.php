@@ -72,7 +72,7 @@ class authController extends Controller
 
     public function register(Request $r)
     {
-        return $r->visitorId;
+        // return $r->visitorId;
 
         $clientIP = request()->ip();
 
