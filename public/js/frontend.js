@@ -2190,6 +2190,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         password: ''
       },
       country: '+880',
+      mobileCode: '',
       errors: {},
       codes: {},
       loadLogin: false
@@ -2229,7 +2230,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _this2.form.mobile = _this2.country;
+                _this2.mobileCode = _this2.country;
 
               case 1:
               case "end":
@@ -2313,37 +2314,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   created: function created() {
-    // if (User.loggedIn()) {
+    this.genaratedCaptcha = Math.random().toString(36).substring(2, 6 + 2); // if (User.loggedIn()) {
     //     this.$router.push({ name: 'home' })
     // }
     // localStorage.setItem('dmdevice',1)
     // console.log(this.$route.query.ref);
+
     if (this.$route.query.ref) {
       this.form.ref_by = this.$route.query.ref;
       this.refer = 1;
     } else {
-      this.form.ref_by = '1234';
+      this.form.ref_by = "11111";
       this.refercheck();
     }
 
-    this.form.country = '+880';
+    this.form.country = "+880";
     this.countryList();
     this.addcountry();
   },
   data: function data() {
     return {
+      btndis: true,
+      captcha: "",
+      genaratedCaptcha: "",
+      mobileCode: null,
       form: {
         country: null,
-        name: null,
+        name: "New Customer",
         username: null,
         mobile: null,
         password: null,
         password_confirmation: null,
-        withdrawpass: '123456',
-        ref_by: null,
-        visitorId: null
+        withdrawpass: "123456",
+        ref_by: null
       },
-      usernameMatch: 0,
+      usernameMatch: 1,
       refer: 0,
       errors: {},
       codes: {},
@@ -2353,6 +2358,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
+    // setLang(){
+    //     localStorage.setItem('language',this.$i18n.locale)
+    // },
     usernamecheck: function usernamecheck() {
       var _this = this;
 
@@ -2362,7 +2370,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!(_this.form.username == '')) {
+                if (!(_this.form.username == "")) {
                   _context.next = 4;
                   break;
                 }
@@ -2373,7 +2381,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
                 _context.next = 6;
-                return _this.callApi('get', "/api/count/username/check?username=".concat(_this.form.username), []);
+                return _this.callApi("get", "/api/count/username/check?username=".concat(_this.form.username), []);
 
               case 6:
                 res = _context.sent;
@@ -2402,7 +2410,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return _this2.callApi('get', "".concat(_this2.$asseturl, "CountryCodes.json"), []);
+                return _this2.callApi("get", "".concat(_this2.$asseturl, "CountryCodes.json"), []);
 
               case 2:
                 res = _context2.sent;
@@ -2425,7 +2433,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _this3.form.mobile = _this3.form.country;
+                // this.form.mobile = this.form.country
+                _this3.mobileCode = _this3.form.country;
 
               case 1:
               case "end":
@@ -2444,7 +2453,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                if (!(_this4.form.ref_by == '')) {
+                if (!(_this4.form.ref_by == "")) {
                   _context4.next = 4;
                   break;
                 }
@@ -2455,7 +2464,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
                 _context4.next = 6;
-                return _this4.callApi('get', "/api/count/username/check?username=".concat(_this4.form.ref_by), []);
+                return _this4.callApi("get", "/api/count/username/check?username=".concat(_this4.form.ref_by), []);
 
               case 6:
                 res = _context4.sent;
@@ -2477,64 +2486,51 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     register: function register() {
       var _this5 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
-        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                // if(localStorage.getItem('dmdevice')){
-                //     Notification.customError(`This device has already have an account!`);
-                // }else{
-                if (_this5.usernameMatch != 2) {
-                  Notification.customError('please Enter deferent username');
-                } else {
-                  if (_this5.refer != 1) {
-                    Notification.customError('Opps,Refer code is Invalid');
-                  } else {
-                    if (_this5.form.password === _this5.form.password_confirmation) {
-                      // const visitorData = await this.$fpjs.getVisitorData({
-                      //     extendedResult: true
-                      // });
-                      // this.form['visitorId'] = visitorData.visitorId;
-                      axios.post('api/auth/register', _this5.form).then(function (res) {
-                        if (res.data == 422) {
-                          Notification.customError('This Phone Number Already Exist');
-                        } else if (res.data == 444) {
-                          Notification.customError("This device has already have an account!");
-                          localStorage.setItem('dmdevice', 1);
-                        } else {
-                          // console.log(res)
-                          if (res.status == 201) {
-                            Notification.customSuccess('Registration Success');
-                            localStorage.setItem('dmdevice', 1);
+      // if(localStorage.getItem('dmdevice')){
+      //     Notification.customError(`This device has already have an account!`);
+      // }else{
+      // if (this.genaratedCaptcha === this.captcha) {
+      // if(this.usernameMatch!=2){
+      // Notification.customError('please Enter deferent username');
+      // }else{
+      if (this.refer != 1) {
+        Notification.customError("Opps,Refer code is Invalid");
+      } else {
+        if (this.form.password === this.form.password_confirmation) {
+          axios.post("api/auth/register", this.form).then(function (res) {
+            if (res.data == 422) {
+              Notification.customError("This Phone Number Already Exist");
+            } else if (res.data == 444) {
+              Notification.customError("This device has already have an account!");
+              localStorage.setItem("dmdevice", 1);
+            } else {
+              // console.log(res)
+              if (res.status == 201) {
+                Notification.customSuccess("Registration Success");
+                localStorage.setItem("dmdevice", 1);
 
-                            _this5.$router.push({
-                              name: '/login'
-                            });
-                          } else {
-                            Notification.customError('Something want wrong. Please Try again or contact with admin');
-                          } // User.responseAfterLogin(res)
+                _this5.$router.push({
+                  name: "/login"
+                });
+              } else {
+                Notification.customError("Something want wrong. Please Try again or contact with admin");
+              } // User.responseAfterLogin(res)
 
-                        } // console.log(res.data)
-                        // User.responseAfterLogin(res)
+            } // console.log(res.data)
+            // User.responseAfterLogin(res)
 
-                      })["catch"](function (error) {
-                        return _this5.errors = error.response.data.errors;
-                      });
-                    } else {
-                      Notification.customError('Password and Confirm password does not match');
-                    }
-                  }
-                } // }
+          })["catch"](function (error) {
+            return _this5.errors = error.response.data.errors;
+          });
+        } else {
+          Notification.customError("Password and Confirm password does not match");
+        }
+      } // }
+      // } else {
+      //     Notification.customError("Captcha does not match!");
+      // }
+      // }
 
-
-              case 1:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
-      }))();
     }
   }
 });
@@ -2889,29 +2885,30 @@ var render = function render() {
 
   return _c("section", {
     attrs: {
-      id: "bigbg"
+      id: "bigbgs"
+    }
+  }, [_c("main", {
+    staticClass: "container"
+  }, [_c("div", {
+    attrs: {
+      "data-v-c1501c16": ""
     }
   }, [_c("div", {
-    staticClass: "form login"
-  }, [_c("div", {
-    staticClass: "text-center"
-  }, [_c("img", {
+    staticClass: "form-container",
     staticStyle: {
-      width: "100px",
-      "float": "center"
+      "padding-bottom": "15rem"
     },
     attrs: {
-      src: _vm.$asseturl + "frontend/img/logos.png",
-      alt: ""
+      "data-v-c1501c16": ""
     }
-  })]), _vm._v(" "), _c("h2", {
-    staticClass: "text-center",
+  }, [_c("form", {
     staticStyle: {
-      "font-size": "30px"
-    }
-  }, [_vm._v("Welcome")]), _vm._v(" "), _c("h2", {
-    staticClass: "text-center mb-5"
-  }, [_vm._v("EPL")]), _vm._v(" "), _c("form", {
+      "padding-top": "6rem",
+      "text-align": "center"
+    },
+    attrs: {
+      "data-v-c1501c16": ""
+    },
     on: {
       submit: function submit($event) {
         $event.preventDefault();
@@ -2919,7 +2916,38 @@ var render = function render() {
       }
     }
   }, [_c("div", {
-    staticClass: "input"
+    staticClass: "d-flex",
+    staticStyle: {
+      "flex-direction": "column"
+    }
+  }, [_c("span", {
+    staticClass: "login100-form-logo",
+    attrs: {
+      "data-v-c1501c16": ""
+    }
+  }, [_c("img", {
+    staticStyle: {
+      "border-radius": "50%"
+    },
+    attrs: {
+      src: _vm.$asseturl + "frontend/img/logos.png",
+      width: "60px"
+    }
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "login100-form-title pt-3 pb-3 text-white",
+    attrs: {
+      "data-v-c1501c16": ""
+    }
+  }, [_vm._v(" Log in ")])]), _vm._v(" "), _c("div", {
+    attrs: {
+      "data-v-c1501c16": ""
+    }
+  }, [_c("div", {
+    staticClass: "wrap-input100 validate-input",
+    attrs: {
+      "data-v-c1501c16": "",
+      "data-validate": "Enter username"
+    }
   }, [_c("input", {
     directives: [{
       name: "model",
@@ -2927,10 +2955,12 @@ var render = function render() {
       value: _vm.form.mobile,
       expression: "form.mobile"
     }],
+    staticClass: "input100",
     attrs: {
-      type: "tel",
-      placeholder: "Enter phone number",
-      required: ""
+      "data-v-c1501c16": "",
+      type: "text",
+      name: "mobile",
+      placeholder: "Mobile Number"
     },
     domProps: {
       value: _vm.form.mobile
@@ -2942,23 +2972,36 @@ var render = function render() {
         _vm.$set(_vm.form, "mobile", $event.target.value);
       }
     }
-  }), _c("span", [_c("img", {
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "wrap-input100 validate-input",
     attrs: {
-      src: _vm.$asseturl + "frontend/img/user.png"
+      "data-v-c1501c16": "",
+      "data-validate": "Enter password"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "input"
-  }, [_c("input", {
+  }, [_c("i", {
+    staticClass: "fa fa-eye",
+    staticStyle: {
+      position: "absolute",
+      right: "20px",
+      top: "13px"
+    },
+    attrs: {
+      "data-v-c1501c16": "",
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.password,
       expression: "form.password"
     }],
+    staticClass: "input100",
     attrs: {
+      "data-v-c1501c16": "",
       type: "password",
-      placeholder: "Enter Password",
-      required: ""
+      name: "pass",
+      placeholder: "Password"
     },
     domProps: {
       value: _vm.form.password
@@ -2970,32 +3013,36 @@ var render = function render() {
         _vm.$set(_vm.form, "password", $event.target.value);
       }
     }
-  }), _c("span", [_c("img", {
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "container-login100-form-btn pt-5",
     attrs: {
-      src: _vm.$asseturl + "frontend/img/pass.png"
+      "data-v-c1501c16": ""
     }
-  })])]), _vm._v(" "), _vm.loadLogin ? _c("input", {
-    staticClass: "submit",
+  }, [_c("button", {
+    staticClass: "login100-form-btn",
     attrs: {
-      id: "form-submit",
-      type: "button",
-      value: "Looding....."
+      "data-v-c1501c16": "",
+      type: "submit"
     }
-  }) : _c("input", {
-    staticClass: "submit",
+  }, [_vm.loadLogin ? _c("span", [_vm._v("Loading....")]) : _c("span", [_vm._v("Login")])])]), _vm._v(" "), _c("div", {
+    staticClass: "text-center p-t-90",
     attrs: {
-      id: "form-submit",
-      type: "submit",
-      value: "LOGIN NOW"
+      "data-v-c1501c16": ""
     }
-  }), _vm._v(" "), _c("router-link", {
-    staticClass: "reg",
+  }, [_c("p", {
+    staticClass: "text69 text-white",
+    attrs: {
+      "data-v-c1501c16": ""
+    }
+  }, [_vm._v("No Account?")]), _vm._v(" "), _c("router-link", {
+    staticClass: "text95 text-white",
     attrs: {
       to: {
         name: "register"
-      }
+      },
+      "data-v-c1501c16": ""
     }
-  }, [_vm._v("Register")])], 1)])]);
+  }, [_vm._v("\n                                            Register\n                                        ")])], 1)])])])])]);
 };
 
 var staticRenderFns = [];
@@ -3022,79 +3069,77 @@ var render = function render() {
 
   return _c("section", {
     attrs: {
-      id: "bigbg"
+      id: "bigbgs"
     }
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "form"
+  }, [_c("main", {
+    staticClass: "container"
   }, [_c("div", {
-    staticClass: "text-center"
-  }, [_c("img", {
+    staticClass: "form-container",
     staticStyle: {
-      width: "100px",
-      "float": "center"
+      "min-height": "0px"
     },
     attrs: {
-      src: _vm.$asseturl + "frontend/img/logos.png",
-      alt: ""
+      "data-v-6daec649": ""
     }
-  })]), _vm._v(" "), _c("h2", {
-    staticClass: "text-center",
-    staticStyle: {
-      "font-size": "30px"
-    }
-  }, [_vm._v("Register")]), _vm._v(" "), _c("h2", {
-    staticClass: "text-center mb-5"
-  }, [_vm._v("EPL")]), _vm._v(" "), _c("form", {
+  }, [_c("form", {
+    staticClass: "pt-5",
+    attrs: {
+      "data-v-6daec649": ""
+    },
     on: {
       submit: function submit($event) {
         $event.preventDefault();
         return _vm.register.apply(null, arguments);
       }
     }
-  }, [_c("select", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.country,
-      expression: "form.country"
-    }],
-    staticClass: "form-control",
+  }, [_c("div", {
+    staticClass: "d-flex",
+    staticStyle: {
+      "flex-direction": "column"
+    }
+  }, [_c("span", {
+    staticClass: "login100-form-logo",
     attrs: {
-      placeholder: "Please Your Country",
-      required: ""
+      "data-v-6daec649": ""
+    }
+  }, [_c("i", {
+    staticClass: "zmdi zmdi-landscape",
+    attrs: {
+      "data-v-6daec649": ""
+    }
+  }), _vm._v(" "), _c("img", {
+    staticStyle: {
+      "border-radius": "50%"
     },
-    on: {
-      change: [function ($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-          return o.selected;
-        }).map(function (o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val;
-        });
-
-        _vm.$set(_vm.form, "country", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
-      }, _vm.addcountry]
-    }
-  }, [_c("option", {
     attrs: {
-      value: ""
+      "data-v-6daec649": "",
+      src: _vm.$asseturl + "frontend/img/logos.png",
+      width: "60px"
     }
-  }, [_vm._v("Select")]), _vm._v(" "), _vm._l(_vm.codes, function (code) {
-    return _c("option", {
-      domProps: {
-        value: code.dial_code
-      }
-    }, [_vm._v(_vm._s(code.name))]);
-  })], 2), _vm._v(" "), _c("input", {
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "login100-form-title pt-3 pb-3 text-white",
+    attrs: {
+      "data-v-6daec649": ""
+    }
+  }, [_vm._v("\n                        Sign Up\n                    ")])]), _vm._v(" "), _c("div", {
+    staticClass: "wrap-input100 validate-input",
+    attrs: {
+      "data-v-6daec649": "",
+      "data-validate": "Enter username"
+    }
+  }, [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.name,
       expression: "form.name"
     }],
+    staticClass: "input100",
     attrs: {
+      "data-v-6daec649": "",
       type: "text",
-      placeholder: "Please enter Name",
+      name: "username",
+      placeholder: "Name",
       required: ""
     },
     domProps: {
@@ -3107,42 +3152,17 @@ var render = function render() {
         _vm.$set(_vm.form, "name", $event.target.value);
       }
     }
-  }), _vm._v(" "), _vm.usernameMatch == 0 ? _c("span", {
-    staticStyle: {
-      color: "red"
-    }
-  }, [_vm._v("Username Field is Required!")]) : _vm.usernameMatch == 1 ? _c("span", {
-    staticStyle: {
-      color: "red"
-    }
-  }, [_vm._v("Opps,Username Already exist,please Enter deferent username")]) : _vm.usernameMatch == 2 ? _c("span", {
-    staticStyle: {
-      color: "green"
-    }
-  }, [_vm._v("Congratulations,Username is Available")]) : _vm._e(), _vm._v(" "), _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.username,
-      expression: "form.username"
-    }],
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "help-block",
     attrs: {
-      type: "text",
-      placeholder: "Please enter username",
-      required: ""
-    },
-    domProps: {
-      value: _vm.form.username
-    },
-    on: {
-      input: [function ($event) {
-        if ($event.target.composing) return;
-
-        _vm.$set(_vm.form, "username", $event.target.value);
-      }, _vm.usernamecheck]
+      "data-v-6daec649": ""
     }
   }), _vm._v(" "), _c("div", {
-    staticClass: "tel"
+    staticClass: "wrap-input100 validate-input",
+    attrs: {
+      "data-v-6daec649": "",
+      "data-validate": "Phone Number"
+    }
   }, [_c("input", {
     directives: [{
       name: "model",
@@ -3150,12 +3170,12 @@ var render = function render() {
       value: _vm.form.mobile,
       expression: "form.mobile"
     }],
-    staticStyle: {
-      "text-align": "left !important"
-    },
+    staticClass: "input100",
     attrs: {
-      type: "tel",
-      placeholder: "Please enter a 11-digit phone number",
+      "data-v-6daec649": "",
+      type: "text",
+      name: "mobile",
+      placeholder: "Phone Number",
       required: ""
     },
     domProps: {
@@ -3168,216 +3188,146 @@ var render = function render() {
         _vm.$set(_vm.form, "mobile", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex position-relative"
-  }, [_vm.showPassword ? _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.password,
-      expression: "form.password"
-    }],
-    staticClass: "contact-frm active",
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "help-block",
     attrs: {
-      type: "password",
-      name: "password",
-      required: "true",
-      placeholder: "Please enter login password"
-    },
-    domProps: {
-      value: _vm.form.password
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-
-        _vm.$set(_vm.form, "password", $event.target.value);
-      }
+      "data-v-6daec649": ""
     }
-  }) : _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.password,
-      expression: "form.password"
-    }],
-    staticClass: "contact-frm active",
+  }), _vm._v(" "), _c("div", {
+    staticClass: "wrap-input100 validate-input",
     attrs: {
-      type: "text",
-      name: "password",
-      required: "true",
-      placeholder: "Please enter login password"
-    },
-    domProps: {
-      value: _vm.form.password
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-
-        _vm.$set(_vm.form, "password", $event.target.value);
-      }
+      "data-v-6daec649": "",
+      "data-validate": "Refer Code"
     }
-  }), _vm._v(" "), _c("button", {
-    staticClass: "button position-absolute top-15 end-0",
-    staticStyle: {
-      background: "transparent",
-      border: "0"
-    },
-    attrs: {
-      type: "button"
-    },
-    on: {
-      click: function click($event) {
-        _vm.showPassword ? _vm.showPassword = false : _vm.showPassword = true;
-      }
-    }
-  }, [_c("span", {
-    staticClass: "icon is-small is-right"
-  }, [_c("i", {
-    staticClass: "fas",
-    "class": {
-      "fa-eye-slash": _vm.showPassword,
-      "fa-eye": !_vm.showPassword
-    }
-  })])])]), _vm._v(" "), _c("div", {
-    staticClass: "d-flex position-relative"
-  }, [_vm.CshowPassword ? _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.password_confirmation,
-      expression: "form.password_confirmation"
-    }],
-    staticClass: "contact-frm active",
-    attrs: {
-      type: "password",
-      name: "password",
-      required: "true",
-      placeholder: "Confirm login password"
-    },
-    domProps: {
-      value: _vm.form.password_confirmation
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-
-        _vm.$set(_vm.form, "password_confirmation", $event.target.value);
-      }
-    }
-  }) : _c("input", {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: _vm.form.password_confirmation,
-      expression: "form.password_confirmation"
-    }],
-    staticClass: "contact-frm active",
-    attrs: {
-      type: "text",
-      name: "password",
-      required: "true",
-      placeholder: "Confirm login password"
-    },
-    domProps: {
-      value: _vm.form.password_confirmation
-    },
-    on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-
-        _vm.$set(_vm.form, "password_confirmation", $event.target.value);
-      }
-    }
-  }), _vm._v(" "), _c("button", {
-    staticClass: "button position-absolute top-15 end-0",
-    staticStyle: {
-      background: "transparent",
-      border: "0"
-    },
-    attrs: {
-      type: "button"
-    },
-    on: {
-      click: function click($event) {
-        _vm.CshowPassword ? _vm.CshowPassword = false : _vm.CshowPassword = true;
-      }
-    }
-  }, [_c("span", {
-    staticClass: "icon is-small is-right"
-  }, [_c("i", {
-    staticClass: "fas",
-    "class": {
-      "fa-eye-slash": _vm.CshowPassword,
-      "fa-eye": !_vm.CshowPassword
-    }
-  })])])]), _vm._v(" "), _vm.refer == 0 ? _c("span", {
-    staticStyle: {
-      color: "red"
-    }
-  }, [_vm._v("Refer Code Field is Required!")]) : _vm.refer == 1 ? _c("span", {
-    staticStyle: {
-      color: "green"
-    }
-  }, [_vm._v("Congratulations,Refer code is Valid")]) : _vm.refer == 2 ? _c("span", {
-    staticStyle: {
-      color: "red"
-    }
-  }, [_vm._v("Opps,Refer code is Invalid")]) : _vm._e(), _vm._v(" "), _c("input", {
+  }, [_c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.form.ref_by,
       expression: "form.ref_by"
     }],
+    staticClass: "input100",
     attrs: {
-      type: "test",
-      placeholder: "Please enter recommendation code",
+      "data-v-6daec649": "",
+      type: "text",
+      name: "refer_code",
+      placeholder: "Refer Code",
       required: ""
     },
     domProps: {
       value: _vm.form.ref_by
     },
     on: {
-      input: [function ($event) {
+      input: function input($event) {
         if ($event.target.composing) return;
 
         _vm.$set(_vm.form, "ref_by", $event.target.value);
-      }, _vm.refercheck]
+      }
     }
-  }), _vm._v(" "), _c("input", {
-    staticClass: "checkbox",
+  })]), _vm._v(" "), _c("span", {
+    staticClass: "help-block",
     attrs: {
-      type: "checkbox",
-      checked: ""
+      "data-v-6daec649": ""
     }
-  }), _vm._v(" "), _c("span", [_vm._v(" I am aware of and agree to the terms of the\n                    account opening agreement")]), _vm._v(" "), _c("input", {
-    staticClass: "submit",
+  }), _vm._v(" "), _c("div", {
+    staticClass: "wrap-input100 validate-input",
     attrs: {
-      type: "submit",
-      value: "register"
+      "data-v-6daec649": "",
+      "data-validate": "Enter password"
     }
-  }), _vm._v(" "), _c("router-link", {
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.password,
+      expression: "form.password"
+    }],
+    staticClass: "input100",
+    attrs: {
+      "data-v-6daec649": "",
+      type: "password",
+      name: "pass",
+      placeholder: "Password",
+      required: ""
+    },
+    domProps: {
+      value: _vm.form.password
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.form, "password", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "wrap-input100 validate-input",
+    attrs: {
+      "data-v-6daec649": "",
+      "data-validate": "Enter password"
+    }
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.password_confirmation,
+      expression: "form.password_confirmation"
+    }],
+    staticClass: "input100",
+    attrs: {
+      "data-v-6daec649": "",
+      type: "password",
+      name: "pass",
+      placeholder: "Confirm Password",
+      required: ""
+    },
+    domProps: {
+      value: _vm.form.password_confirmation
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.form, "password_confirmation", $event.target.value);
+      }
+    }
+  })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "text-center p-t-90",
+    attrs: {
+      "data-v-6daec649": ""
+    }
+  }, [_c("p", {
+    staticClass: "text69 text-white",
+    attrs: {
+      "data-v-6daec649": ""
+    }
+  }, [_vm._v("Have You Account?")]), _vm._v(" "), _c("router-link", {
+    staticClass: "text95 text-white",
     attrs: {
       to: {
         name: "/login"
-      }
+      },
+      "data-v-6daec649": ""
     }
-  }, [_vm._v("You have an account. Log in now")])], 1)])]);
+  }, [_vm._v("\n                            Login\n                        ")])], 1)])])])]);
 };
 
 var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("a", {
+  return _c("div", {
+    staticClass: "container-login100-form-btn",
     attrs: {
-      href: "login.html"
+      "data-v-6daec649": ""
     }
-  }, [_c("i", {
-    staticClass: "fa fa-angle-left"
-  })]);
+  }, [_c("button", {
+    staticClass: "login100-form-btn",
+    attrs: {
+      "data-v-6daec649": "",
+      type: "subimt"
+    }
+  }, [_vm._v("\n                            Sign Up\n                        ")])]);
 }];
 render._withStripped = true;
 
@@ -15102,7 +15052,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nsection.vh-100[data-v-2a1c1b9c] {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%,-50%);\n    width: 100%;\n}\n.blurerror input[data-v-2a1c1b9c] {\n    border: 1px solid red !important;\n}\n.blurerror label[data-v-2a1c1b9c] {\n    color:red !important;\n}\n.blursuccess input[data-v-2a1c1b9c] {\n    border: 1px solid green !important;\n}\n.blursuccess label[data-v-2a1c1b9c] {\n    color:green !important;\n}\n.divider[data-v-2a1c1b9c]:after,\n.divider[data-v-2a1c1b9c]:before {\ncontent: \"\";\nflex: 1;\nheight: 1px;\nbackground: #eee;\n}\n*[data-v-2a1c1b9c],\n*[data-v-2a1c1b9c]:focus{outline: none}\n\n/* .form{\n  width: 500px;\n  margin: 0 auto;\n  margin-top: 150px;\n  font-family: sans-serif;\n  background: #fff\n} */\n.form-item[data-v-2a1c1b9c]{\n  position: relative;\n  margin-bottom: 15px\n}\n.form-item input[data-v-2a1c1b9c]{\n  display: block;\n  width: 100%;\n  height: 40px;\n  background: transparent;\n  border: solid 1px #ccc;\n  transition: all .3s ease;\n  padding: 0 15px\n}\n.form-item input[data-v-2a1c1b9c]:focus{\n  border-color: blue\n}\n.form-item label[data-v-2a1c1b9c]{\n  position: absolute;\n  cursor: text;\n  z-index: 2;\n  top: 13px;\n  left: 10px;\n  font-size: 12px;\n  font-weight: bold;\n  background: #fff;\n  padding: 0 10px;\n  color: #999;\n  transition: all .3s ease\n}\n.form-item input:focus + label[data-v-2a1c1b9c],\n.form-item input:valid + label[data-v-2a1c1b9c]{\n  font-size: 11px;\n  top: -5px\n}\n.form-item input:focus + label[data-v-2a1c1b9c]{\n  color: blue\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.languagechange[data-v-2a1c1b9c] {\n    width: 100px;\n    float: right;\n}\nsection.vh-100[data-v-2a1c1b9c] {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    width: 100%;\n}\n.blurerror input[data-v-2a1c1b9c] {\n    border: 1px solid red !important;\n}\n.blurerror label[data-v-2a1c1b9c] {\n    color: red !important;\n}\n.blursuccess input[data-v-2a1c1b9c] {\n    border: 1px solid green !important;\n}\n.blursuccess label[data-v-2a1c1b9c] {\n    color: green !important;\n}\n.divider[data-v-2a1c1b9c]:after,\n.divider[data-v-2a1c1b9c]:before {\n    content: \"\";\n    flex: 1;\n    height: 1px;\n    background: #eee;\n}\n*[data-v-2a1c1b9c],\n*[data-v-2a1c1b9c]:focus {\n    outline: none\n}\n\n/* .form{\n  width: 500px;\n  margin: 0 auto;\n  margin-top: 150px;\n  font-family: sans-serif;\n  background: #fff\n} */\n.form-item[data-v-2a1c1b9c] {\n    position: relative;\n    margin-bottom: 15px\n}\n.form-item input[data-v-2a1c1b9c] {\n    display: block;\n    width: 100%;\n    height: 40px;\n    background: transparent;\n    border: solid 1px #ccc;\n    transition: all .3s ease;\n    padding: 0 15px\n}\n.form-item input[data-v-2a1c1b9c]:focus {\n    border-color: blue\n}\n.form-item label[data-v-2a1c1b9c] {\n    position: absolute;\n    cursor: text;\n    z-index: 2;\n    top: 13px;\n    left: 10px;\n    font-size: 12px;\n    font-weight: bold;\n    background: #fff;\n    padding: 0 10px;\n    color: #999;\n    transition: all .3s ease\n}\n.form-item input:focus+label[data-v-2a1c1b9c],\n.form-item input:valid+label[data-v-2a1c1b9c] {\n    font-size: 11px;\n    top: -5px\n}\n.form-item input:focus+label[data-v-2a1c1b9c] {\n    color: blue\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -15126,7 +15076,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nbutton.button[data-v-1b4207c0] {\n    padding: 7px 5px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.languagechange[data-v-1b4207c0] {\n    width: 100px;\n    float: right;\n}\nbutton.button[data-v-1b4207c0] {\n    padding: 7px 5px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

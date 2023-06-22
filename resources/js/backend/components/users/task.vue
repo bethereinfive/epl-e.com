@@ -16,7 +16,7 @@
             <p>Automatic order mode</p>
         </section> -->
         <section class="text-center position-relative" v-if="!orderpage">
-            <img style="width:98%" :src="$asseturl + 'img/215.png'" alt="">
+            <img style="width:45%" :src="$asseturl + 'img/mainproduct.jpeg'" alt="">
             <div class="orderamount" v-if="receive">Tk {{ random }}</div>
         </section>
         <section class="text-center position-relative" v-if="!orderpage">

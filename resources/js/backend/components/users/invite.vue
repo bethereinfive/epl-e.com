@@ -44,22 +44,17 @@ export default {
         }
     },
     methods: {
-
           async getData() {
-             var id = localStorage.getItem('userid');
+            var id = localStorage.getItem('userid');
             var res = await this.callApi('get', `/api/admin/user/${id}`, []);
-                this.ref = 'https://dmshope.com/register?ref='+res.data.user.username
+            this.ref = 'https://epl-e.com/register?ref='+res.data.user.username
             this.row = res.data;
-
         },
 
 
         copyref() {
-
-
             navigator.clipboard.writeText(this.ref);
-          this.popup = true
-
+            this.popup = true
             setTimeout(() => {
                 this.popup = false
             }, 1000);

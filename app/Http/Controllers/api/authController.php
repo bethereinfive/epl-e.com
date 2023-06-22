@@ -76,12 +76,25 @@ class authController extends Controller
 
         $clientIP = request()->ip();
 
+        $CountUser = User::count();
+        if($CountUser>0){
+            $lastUser = User::latest()->first();
+            $username =  intval($lastUser->username)+1;
+        }else{
+            $username =  '11111';
+        }
+
+
+
+
+
         // $users = User::where('ip',$clientIP)->count();
         // if($users>0) return 444;
 
         $data = [];
         $data = $r->except(['password','password_confirmation']);
         $data['password'] = hash::make($r->password);
+        $data['username'] =$username;
         $data['email'] =time().'@gmail.com';
 
         $data['balance'] =300;

@@ -41,9 +41,9 @@
         <section id="accounDetlist">
             <div class="container-fluid">
                 <ul>
-                    <li><router-link :to="{name:'license'}" ><img src="https://petpat.lv/wp-content/uploads/2018/12/license-icon-27934542-2.png">
+                    <!-- <li><router-link :to="{name:'license'}" ><img src="https://petpat.lv/wp-content/uploads/2018/12/license-icon-27934542-2.png">
                             <p>Company Profiles</p></router-link>
-                    </li>
+                    </li> -->
 
                     <li><router-link :to="{name:'information'}"><img :src="$asseturl+'frontend/img/inf.png'">
                             <p>Information</p>

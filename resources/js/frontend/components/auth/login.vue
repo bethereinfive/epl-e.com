@@ -1,36 +1,60 @@
 <template>
 
 
- <section id="bigbg">
+    <section id="bigbgs">
 
-    <div class="form login">
-        <div class="text-center">
-
-            <img style="width: 100px;float: center;" :src="$asseturl+'frontend/img/logos.png'" alt="">
-        </div>
-
-        <h2 class="text-center" style="font-size:30px">Welcome</h2>
-        <h2 class="text-center mb-5">EPL</h2>
-        <form @submit.prevent='login'>
-           <div class="input"> <input type="tel" placeholder="Enter phone number" v-model="form.mobile" required><span><img :src="$asseturl+'frontend/img/user.png'" ></span></div>
-           <div class="input"> <input type="password" placeholder="Enter Password" v-model="form.password" required><span><img :src="$asseturl+'frontend/img/pass.png'" ></span></div>
-           <!-- <input type="checkbox" class="checkbox" > <span> Remember Me</span> -->
+<main class="container" style="">
+                        <!---->
+                        <div data-v-c1501c16="">
+                            <div data-v-c1501c16="" class="form-container" style="padding-bottom: 15rem;">
+                                <form data-v-c1501c16="" style="padding-top: 6rem;text-align: center;" @submit.prevent='login'>
 
 
-           <!-- <input type="submit" value="Login" class="submit"> -->
+                                    <div class="d-flex" style="flex-direction: column;">
 
 
-           <input id="form-submit" type="button" v-if="loadLogin" value="Looding....."
-           class="submit">
-            <input id="form-submit" type="submit" v-else value="LOGIN NOW" class="submit">
+                                        <span data-v-c1501c16="" class="login100-form-logo"><img style="border-radius: 50%;" :src="$asseturl+'frontend/img/logos.png'" width="60px" /></span>
+                                        <span data-v-c1501c16="" class="login100-form-title pt-3 pb-3 text-white"> Log in </span>
+
+                                    </div>
+
+                                    <div data-v-c1501c16="">
+                                        <div data-v-c1501c16="" data-validate="Enter username" class="wrap-input100 validate-input"><input data-v-c1501c16="" type="text" name="mobile" v-model="form.mobile" placeholder="Mobile Number" class="input100" /></div>
+                                        <div data-v-c1501c16="" data-validate="Enter password" class="wrap-input100 validate-input">
+                                            <i data-v-c1501c16="" class="fa fa-eye" aria-hidden="true" style="position: absolute; right: 20px; top: 13px;"></i>
+                                            <input data-v-c1501c16="" type="password" name="pass" v-model="form.password" placeholder="Password" class="input100" />
+                                        </div>
+                                    </div>
+                                    <div data-v-c1501c16="" class="container-login100-form-btn pt-5">
+                                        <button data-v-c1501c16="" type="submit" class="login100-form-btn">
+                                            <span  v-if="loadLogin">Loading....</span>
+                                            <span  v-else>Login</span>
+                                        </button>
+                                    </div>
+                                    <div data-v-c1501c16="" class="text-center p-t-90">
+                                        <p data-v-c1501c16="" class="text69 text-white">No Account?</p>
+                                        <router-link :to="{name:'register'}" data-v-c1501c16=""  class="text95 text-white">
+                                            Register
+                                        </router-link>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </main>
 
 
 
 
-<router-link :to="{name:'register'}" class="reg">Register</router-link>
-        </form>
-    </div>
-</section>
+
+
+
+
+
+
+
+
+
+    </section>
 
 
 
@@ -38,27 +62,18 @@
 </template>
 
 <script>
-
 export default {
 
-	created(){
+    created() {
 
         this.addcountry();
         this.countryList();
+    },
+
+    data() {
+        return {
 
 
-
-
-
-
-
-
-
-
-	},
-
-	data () {
-		return {
 
             emailLogin: "",
             passwordLogin: "",
@@ -66,17 +81,19 @@ export default {
             passwordReg: "",
             confirmReg: "",
             emptyFields: false,
-			form: {
-				mobile: '',
-				password: ''
-			},
-			country:'+880',
-			errors:{},
-			codes:{},
-            loadLogin:false
-		}
-	},
-	methods:{
+            form: {
+                mobile: '',
+                password: ''
+            },
+            country: '+880',
+            mobileCode: '',
+            errors: {},
+            codes: {},
+            loadLogin: false
+        }
+    },
+    methods: {
+
 
         async countryList() {
             var res = await this.callApi('get', `${this.$asseturl}CountryCodes.json`, []);
@@ -84,7 +101,7 @@ export default {
             this.codes = res.data
         },
         async addcountry() {
-            this.form.mobile = this.country
+            this.mobileCode = this.country
         },
 
         login() {
@@ -107,13 +124,13 @@ export default {
                         } else if (res.data == 444) {
                             Notification.customError('You Cant Login Multiple account same device!');
                             this.loadLogin = false
-                            localStorage.setItem('dmdevice',1)
+                            localStorage.setItem('dmdevice', 1)
                         } else {
 
 
 
 
-                            localStorage.setItem('dmdevice',1)
+                            localStorage.setItem('dmdevice', 1)
                             User.responseAfterLogin(res)
                             if (res.data.role == 'admin') {
                                 window.location.href = '/dashboard/adddmin'
@@ -141,12 +158,12 @@ export default {
         },
 
 
-        blur(id){
-        const child = document.getElementById(id);
-            if(this.form[id]==''){
+        blur(id) {
+            const child = document.getElementById(id);
+            if (this.form[id] == '') {
                 child.parentNode.classList.remove("blursuccess");
                 child.parentNode.classList.add("blurerror");
-            }else{
+            } else {
                 child.parentNode.classList.remove("blurerror");
                 child.parentNode.classList.add("blursuccess");
             }
@@ -156,40 +173,52 @@ export default {
 
 
 
-	}
+    }
 }
 </script>
 
 <style lang="css" scoped>
+.languagechange {
+    width: 100px;
+    float: right;
+}
 
 section.vh-100 {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 100%;
 }
+
 .blurerror input {
     border: 1px solid red !important;
 }
+
 .blurerror label {
-    color:red !important;
+    color: red !important;
 }
+
 .blursuccess input {
     border: 1px solid green !important;
 }
+
 .blursuccess label {
-    color:green !important;
+    color: green !important;
 }
+
 .divider:after,
 .divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
 }
+
 *,
-*:focus{outline: none}
+*:focus {
+    outline: none
+}
 
 /* .form{
   width: 500px;
@@ -198,43 +227,47 @@ background: #eee;
   font-family: sans-serif;
   background: #fff
 } */
-.form-item{
-  position: relative;
-  margin-bottom: 15px
-}
-.form-item input{
-  display: block;
-  width: 100%;
-  height: 40px;
-  background: transparent;
-  border: solid 1px #ccc;
-  transition: all .3s ease;
-  padding: 0 15px
-}
-.form-item input:focus{
-  border-color: blue
-}
-.form-item label{
-  position: absolute;
-  cursor: text;
-  z-index: 2;
-  top: 13px;
-  left: 10px;
-  font-size: 12px;
-  font-weight: bold;
-  background: #fff;
-  padding: 0 10px;
-  color: #999;
-  transition: all .3s ease
-}
-.form-item input:focus + label,
-.form-item input:valid + label{
-  font-size: 11px;
-  top: -5px
-}
-.form-item input:focus + label{
-  color: blue
+.form-item {
+    position: relative;
+    margin-bottom: 15px
 }
 
+.form-item input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: solid 1px #ccc;
+    transition: all .3s ease;
+    padding: 0 15px
+}
+
+.form-item input:focus {
+    border-color: blue
+}
+
+.form-item label {
+    position: absolute;
+    cursor: text;
+    z-index: 2;
+    top: 13px;
+    left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    background: #fff;
+    padding: 0 10px;
+    color: #999;
+    transition: all .3s ease
+}
+
+.form-item input:focus+label,
+.form-item input:valid+label {
+    font-size: 11px;
+    top: -5px
+}
+
+.form-item input:focus+label {
+    color: blue
+}
 </style>
 
