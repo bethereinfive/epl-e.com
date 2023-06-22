@@ -3773,31 +3773,22 @@ var Notification = /*#__PURE__*/function () {
 
   _createClass(Notification, [{
     key: "successSound",
-    value: function successSound() {
-      // console.log(this)
-      var data = {
-        soundurl: ASSETURL + 'Single Audio.mp3'
-      };
-      var audio = new Audio(data.soundurl);
-      audio.play();
+    value: function successSound() {// console.log(this)
+      // var data = {  soundurl : ASSETURL+'Single Audio.mp3'}
+      // var audio = new Audio(data.soundurl);
+      // audio.play();
     }
   }, {
     key: "deleteSound",
-    value: function deleteSound() {
-      var data = {
-        soundurl: ASSETURL + 'Broke Glass.mp3'
-      };
-      var audio = new Audio(data.soundurl);
-      audio.play();
+    value: function deleteSound() {// var data = {  soundurl : ASSETURL+'Broke Glass.mp3'}
+      // var audio = new Audio(data.soundurl);
+      // audio.play();
     }
   }, {
     key: "errorSound",
-    value: function errorSound() {
-      var data = {
-        soundurl: ASSETURL + 'Windows error.mp3'
-      };
-      var audio = new Audio(data.soundurl);
-      audio.play();
+    value: function errorSound() {// var data = {  soundurl : ASSETURL+'Windows error.mp3'}
+      // var audio = new Audio(data.soundurl);
+      // audio.play();
     }
   }, {
     key: "success",
