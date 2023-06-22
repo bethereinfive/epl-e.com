@@ -8,16 +8,16 @@ window.User = User
 import Notification from '../helpers/Notification';
 window.Notification = Notification
 
-import { fpjsPlugin } from '@fingerprintjs/fingerprintjs-pro-vue-v2';
+// import { fpjsPlugin } from '@fingerprintjs/fingerprintjs-pro-vue-v2';
 
 
-const apiKey = '<public-api-key>'
+// const apiKey = '<public-api-key>'
 
-Vue.use(fpjsPlugin, {
-    loadOptions: {
-      apiKey: "DGizXQL1UiqHM2g4O0W9"
-    },
-  });
+// Vue.use(fpjsPlugin, {
+//     loadOptions: {
+//       apiKey: "DGizXQL1UiqHM2g4O0W9"
+//     },
+//   });
 
 
 
