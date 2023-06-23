@@ -105,7 +105,7 @@ class WithdrawalController extends Controller
     {
         $user_id = $request->user_id;
         $dpcount = Deposit::where(['user_id'=>$user_id])->count();
-        if($dpcount>0){
+        // if($dpcount>0){
 
 
 
@@ -130,9 +130,9 @@ class WithdrawalController extends Controller
         return Withdrawal::create($data);
 
 
-    }else{
-        return 422;
-    }
+    // }else{
+    //     return 422;
+    // }
 
     }
 

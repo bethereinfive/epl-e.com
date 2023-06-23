@@ -37,13 +37,15 @@
                                 Method <span class="font-weight-bold">{{ rows.method.name }}</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Amount <span class="font-weight-bold">{{ rows.deposit.amount }} {{ rows.method.currency }}</span>
+                                Amount <span class="font-weight-bold">{{  parseFloat(rows.deposit.amount/rows.deposit.rate).toFixed(2)  }} {{ rows.method.currency }}</span>
                             </li>
 
 
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Rate <span class="font-weight-bold"> 1 TAKA
-                                    = {{ rows.method.rate }} {{ rows.method.symbol }}</span>
+                                Rate
+
+                                <span v-if="rows.method.currency" class="font-weight-bold">1 USD = {{ rows.method.rate }} TK</span>
+                                <span v-else class="font-weight-bold">1 TAKA = {{ rows.method.rate }} {{ rows.method.symbol }}</span>
                             </li>
 
                             <li class="list-group-item d-flex justify-content-between align-items-center">

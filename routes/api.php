@@ -10,6 +10,7 @@ use App\Http\Controllers\DepositController;
 use App\Http\Controllers\GatewayController;
 use App\Http\Controllers\SettingController;
 use  App\Http\Controllers\api\authController;
+use App\Http\Controllers\TransitionController;
 use App\Http\Controllers\WithdrawalController;
 
 /*
@@ -75,6 +76,7 @@ Route::resources([
     'admin/task' => TaskController::class,
     'admin/withdraw/gateway' => GatewayController::class,
     'admin/setting' => SettingController::class,
+    'admin/transition' => TransitionController::class,
 
 ]);
 

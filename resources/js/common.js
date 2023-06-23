@@ -82,6 +82,7 @@ export default {
             'Users' : 'getUpdateUser',
             // 'userPermission' : 'getUserPermission',
             'getUserRoles' : 'getUserRoles',
+            'settingss' : 'getUpdateSetting',
         }),
 
         // isReadPermitted(){

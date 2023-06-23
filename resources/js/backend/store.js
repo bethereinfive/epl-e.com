@@ -10,6 +10,7 @@ const store = new Vuex.Store({
         Users:{},
         // userPermission:{},
         userRoles:{},
+        settingsss:{},
 
     },// as like data(){return:{}}
     mutations:{
@@ -31,7 +32,9 @@ const store = new Vuex.Store({
         // setUserPermission(state,data){
         //     state.userPermission = data
         // },
-
+        setUpdateSetting(state,data){
+            state.settingsss = data
+        },
 
         setUserRoles(state,data){
             state.userRoles = data
@@ -51,8 +54,10 @@ const store = new Vuex.Store({
 
         getUserRoles(state){
             return state.userRoles
-        }
-
+        },
+        getUpdateSetting(state){
+            return state.settingsss
+        },
 
         // totalBook(state){
         //     return state.bookList.length;

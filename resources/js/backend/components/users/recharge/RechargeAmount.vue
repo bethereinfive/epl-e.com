@@ -19,15 +19,16 @@
     </main> -->
 <section class="fw-bold mt-3 mx-3">
     <div class="grid-container">
-        <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 400 }" @click="form.amount = 400">৳400</p>
-        <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 500 }" @click="form.amount = 500">৳500</p>
-        <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 1100 }" @click="form.amount = 1100">৳1100</p>
-        <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 2600 }" @click="form.amount = 2600">৳2600</p>
+        <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 800 }" @click="form.amount = 800">৳800</p>
+        <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 1000 }" @click="form.amount = 1000">৳1000</p>
+        <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 1500 }" @click="form.amount = 1500">৳1500</p>
+        <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 2500 }" @click="form.amount = 2500">৳2500</p>
+        <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 3000 }" @click="form.amount = 3000">৳3000</p>
         <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 6000 }" @click="form.amount = 6000">৳6000</p>
         <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 10000 }" @click="form.amount = 10000">৳10000</p>
-        <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 16000 }" @click="form.amount = 16000">৳16000</p>
+        <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 20000 }" @click="form.amount = 20000">৳20000</p>
         <p class="bg-white py-3 shadow text-center w-100" :class="{ 'active':form.amount == 25000 }" @click="form.amount = 25000">৳25000</p>
-
+                
 
       </div>
 
@@ -47,7 +48,7 @@
     <button class="btn btn-primary mt-3" type="submit">Recharge Now</button>
 </section>
 </form>
-
+<br/><br/>
 <p>
     আপনি যত অর্থ ডিপোজিট করবেন সেটি আপনার মুল একাউন্টে থাকবে। <br/><br/>
 

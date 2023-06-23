@@ -75,7 +75,7 @@
     },
     data(){
         return {
-
+            isActive:false
         }},
     watch: {
         '$route': {
@@ -86,10 +86,26 @@
         }
     },
     mounted() {
-
+this.getData();
 
     },
     methods: {
+
+        async getData() {
+            this.isActive = true
+
+        var resN = await this.callApi('get',`/api/admin/setting`,[])
+        var id = localStorage.getItem('userid');
+        // var res = await this.callApi('get', `/api/admin/user/${id}`, []);
+
+
+        this.$store.commit('setUpdateSetting', resN.data)
+        // this.$store.commit('setFrontUpdateUser', res.data)
+        this.isActive = false
+
+        },
+
+
         createlink(url=''){
             let recaptchaScript = document.createElement('link')
             recaptchaScript.setAttribute('href', this.$asseturl+url)

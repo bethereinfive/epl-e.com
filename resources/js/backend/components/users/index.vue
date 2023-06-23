@@ -93,7 +93,7 @@
             <hr>
             <img width="100%" :src="$asseturl+'frontend/img/partners.jpeg'" alt="">
           </div> -->
-          
+
 
         </div>
       </div>
@@ -147,6 +147,7 @@ export default {
             slider:[
             this.$asseturl+'frontend/img/banner1.jpg',
             this.$asseturl+'frontend/img/banner2.jpg',
+            this.$asseturl+'frontend/img/banner3.jpg',
 
             ]
         }

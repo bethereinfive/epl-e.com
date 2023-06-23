@@ -6,7 +6,7 @@
 <main class="container" style="">
                         <!---->
                         <div data-v-c1501c16="">
-                            <div data-v-c1501c16="" class="form-container" style="padding-bottom: 15rem;">
+                            <div data-v-c1501c16="" class="form-container" style="padding-bottom: 0;">
                                 <form data-v-c1501c16="" style="padding-top: 6rem;text-align: center;" @submit.prevent='login'>
 
 
@@ -19,7 +19,7 @@
                                     </div>
 
                                     <div data-v-c1501c16="">
-                                        <div data-v-c1501c16="" data-validate="Enter username" class="wrap-input100 validate-input"><input data-v-c1501c16="" type="text" name="mobile" v-model="form.mobile" placeholder="Mobile Number" class="input100" /></div>
+                                        <div data-v-c1501c16="" data-validate="Enter username" class="wrap-input100 validate-input"><input data-v-c1501c16="" type="text" name="username" v-model="form.mobile" placeholder="Mobile Number" class="input100" /></div>
                                         <div data-v-c1501c16="" data-validate="Enter password" class="wrap-input100 validate-input">
                                             <!-- <i data-v-c1501c16="" class="fa fa-eye" aria-hidden="true" style="position: absolute; right: 20px; top: 13px;"></i> -->
                                             <input data-v-c1501c16="" type="password" name="pass" v-model="form.password" placeholder="Password" class="input100" />

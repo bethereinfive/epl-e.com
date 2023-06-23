@@ -43,7 +43,13 @@ export default {
                 formatter: (value, key, item) => {
                        return value.name
                     } },
-                { key: 'amount', label: 'Amount', sortable: true },
+                { key: 'amount', label: 'Amount', sortable: true,
+
+
+                formatter: (value, key, item) => {
+                       return parseFloat(value/item.rate).toFixed(2)
+                    }
+            },
                 { key: 'charge', label: 'Charge', sortable: true },
                 { key: 'amount', label: 'After Charge', sortable: true },
                 { key: 'rate', label: 'Rate', sortable: true },

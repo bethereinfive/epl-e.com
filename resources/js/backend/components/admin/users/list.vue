@@ -37,8 +37,8 @@
                         <tr>
                             <th>Username</th>
                             <th>Phone</th>
-                            <th>Plan</th>
-                            <th>Task Available</th>
+                            <!-- <th>Plan</th> -->
+                            <!-- <th>Task Available</th> -->
                             <th>Balance</th>
                             <th>Status</th>
                             <th>Actions</th>
@@ -48,8 +48,8 @@
                         <tr v-for="item in items">
                             <td>{{ item.username }}</td>
                             <td>{{ item.mobile }}</td>
-                            <td>{{ item.plans.name }}</td>
-                            <td>{{ item.task }}</td>
+                            <!-- <td>{{ item.plans.name }}</td> -->
+                            <!-- <td>{{ item.task }}</td> -->
                             <td>{{ item.balance }}</td>
                             <td>{{ item.status }}</td>
                             <td>

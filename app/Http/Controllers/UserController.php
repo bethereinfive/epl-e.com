@@ -199,6 +199,7 @@ public function referfunction($id)
         }
 
         $refercode = $user->username;
+        $referList = User::with(['Plans'])->where(['ref_by'=>$refercode])->get();
         $refercount = User::where(['ref_by'=>$refercode])->count();
 
         $deposit = Deposit::where(['user_id'=>$user->id,'status'=>'approved'])->get();
@@ -208,13 +209,18 @@ public function referfunction($id)
         $plans = Plan::find($user->plan_id);
 
         $todayDate = date('Y-m-d');
-         $YesterdayDate =  date('Y-m-d',strtotime("-1 days"));
+        $YesterdayDate =  date('Y-m-d',strtotime("-1 days"));
+        $registration_bonus = Transition::where(['user_id'=>$user->id,'remark'=>'registration_bonus'])->sum('amount');
+        $deposit_commisition = Transition::where(['user_id'=>$user->id,'remark'=>'deposit_commisition'])->count();
         $taskearn = Task::where(['user_id'=>$user->id])->sum('task_comisition');
         $todayearn = Task::where(['user_id'=>$user->id,'date'=>$todayDate])->sum('task_comisition');
         $YesterdayEarn = Task::where(['user_id'=>$user->id,'date'=>$YesterdayDate])->sum('task_comisition');
 
 
        $rows = [
+           'new_regitration'=>settings()->new_regitration,
+           'deposit_commisition'=>$deposit_commisition,
+           'registration_bonus'=>$registration_bonus,
            'taskearn'=>$taskearn,
            'todayearn'=>$todayearn,
            'YesterdayEarn'=>$YesterdayEarn,
@@ -226,6 +232,7 @@ public function referfunction($id)
            'withdraw'=>$withdraw,
            'withdrawamount'=>$withdrawamount,
            'refercount'=>$refercount,
+           'referList'=>$referList,
        ];
        return $rows;
     }

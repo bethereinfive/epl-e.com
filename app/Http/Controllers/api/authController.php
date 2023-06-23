@@ -97,7 +97,8 @@ class authController extends Controller
         $data['username'] =$username;
         $data['email'] =time().'@gmail.com';
 
-        $data['balance'] =300;
+        $bonus = settings()->new_regitration;
+        $data['balance'] =$bonus;
         $data['task'] =10;
         $data['plan_id'] =planId(300);
         $data['ip'] = $clientIP;
@@ -125,7 +126,31 @@ class authController extends Controller
                 //     $reUser->update(['balance'=> balanceIncrease($reUser->balance, '10')]);
                 // }
 
-             return     $user =   User::create($data);
+            //  return     $user =   User::create($data);
+
+
+             $refer_bonus =  (int)settings()->refer_bonus;
+             if($refer_bonus>0){
+              $reUserCount =  User::where('ref_by',$r->ref_by)->count();
+              if($reUserCount<(int)settings()->ref_count){
+                  $reUser =  User::where('username',$r->ref_by)->first();
+                  transitionCreate($reUser->id,$refer_bonus,0,$refer_bonus,'increase','1234','refer_commisition','');
+                  $reUser->update(['balance'=> balanceIncrease($reUser->balance, $refer_bonus)]);
+              }
+             }
+
+
+
+
+                  $user =   User::create($data);
+
+                     transitionCreate($user->id,$bonus,0,$bonus,'increase','DJGDFGLJ','registration_bonus','');
+         return $user;
+
+
+
+
+
             }
         } catch (Exception $e) {
             return sent_error($e->getMessage(), $e->getCode());

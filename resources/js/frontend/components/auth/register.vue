@@ -15,12 +15,12 @@
                     </span>
                     </div>
                     <div data-v-6daec649="" data-validate="Enter username" class="wrap-input100 validate-input">
-                        <input data-v-6daec649="" type="text" v-model="form.name" name="username" placeholder="Name"
+                        <input data-v-6daec649="" type="text" v-model="form.name" placeholder="Name"
                             class="input100" required />
                     </div>
                     <span data-v-6daec649="" class="help-block"></span>
                     <div data-v-6daec649="" data-validate="Phone Number" class="wrap-input100 validate-input">
-                        <input data-v-6daec649="" v-model="form.mobile" type="text" name="mobile"
+                        <input data-v-6daec649="" v-model="form.mobile" type="text" name="username"
                             placeholder="Phone Number" class="input100" required />
                     </div>
                     <span data-v-6daec649="" class="help-block"></span>

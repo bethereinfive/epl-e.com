@@ -45,11 +45,11 @@
                                     <a href="#"> {{ rows.refercount  }} User</a>
                                 </span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Total Commissions <span class="font-weight-bold">
                                     <a href="#"> 0 TAKA</a>
                                 </span>
-                            </li>
+                            </li> -->
                         </ul>
 
 
@@ -103,7 +103,7 @@
                 <div class="row mb-none-30">
                     <div class="col-xl-3 col-lg-6 col-sm-6 mb-30">
                         <div class="dashboard-w1 bg--gradi-1 b-radius--10 box-shadow has--link">
-                            <a href="https://realearn69.com/admin/user/deposits/2250" class="item--link"></a>
+                            <a href="javascript:void(0)" class="item--link"></a>
                             <div class="icon">
                                 <i class="fa fa-credit-card"></i>
                             </div>
@@ -120,7 +120,7 @@
                     </div><!-- dashboard-w1 end -->
                     <div class="col-xl-3 col-lg-6 col-sm-6 mb-30">
                         <div class="dashboard-w1 bg--gradi-15 b-radius--10 box-shadow has--link">
-                            <a href="https://realearn69.com/admin/user/withdrawals/2250" class="item--link"></a>
+                            <a href="javascript:void(0)" class="item--link"></a>
                             <div class="icon">
                                 <i class="fa fa-wallet"></i>
                             </div>
@@ -137,18 +137,21 @@
                     </div><!-- dashboard-w1 end -->
                     <div class="col-xl-3 col-lg-6 col-sm-6 mb-30">
                         <div class="dashboard-w1 bg--gradi-21 b-radius--10 box-shadow has--link">
-                            <a href="https://realearn69.com/admin/user/transactions/2250" class="item--link"></a>
+                            <router-link :to="{name:'transitionslist',params:{userid:rows.user.id}}" style="color: white;
+    display: block;
+    height: 100%;" class="item--link">
                             <div class="icon">
                                 <i class="la la-exchange-alt"></i>
                             </div>
                             <div class="details">
                                 <div class="numbers">
-                                    <span class="amount">{{ rows.withdraw.length+rows.deposit.length }}</span>
+                                    <span class="amount">{{ rows.withdraw.length+rows.deposit.length+rows.deposit_commisition }}</span>
                                 </div>
                                 <div class="desciption">
                                     <span>Total Transaction</span>
                                 </div>
                             </div>
+                        </router-link>
                         </div>
                     </div><!-- dashboard-w1 end -->
                     <div class="col-xl-3 col-lg-6 col-sm-6 mb-30">
@@ -273,6 +276,69 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>Refer List</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+
+                            <!-- <th>Plan</th> -->
+                            <th>Balance</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in rows.referList">
+                            <td>{{ item.username }}</td>
+
+                            <!-- <td>{{ item.plans.name }}</td> -->
+                            <td>{{ item.balance }}</td>
+                            <td>{{ item.status }}</td>
+                            <td>
+
+                                <router-link size="sm" :to="{ name: 'UsersView', params: { id: item.id } }"
+                                class="btn btn-info mr-1 mt-1">
+                                View
+                            </router-link>
+<!--
+
+                            <span size="sm" @click="cancel(cancelRoute, item.id, 'active', $event.target)"
+                                v-if="cancelRoute != '' && item.status=='banned'" class="btn btn-success mr-1 mt-1">
+                                Active
+                            </span>
+
+
+                            <span size="sm" @click="cancel(cancelRoute, item.id, 'approved', $event.target)"
+                                v-else-if="cancelRoute != '' && item.status=='reject'" class="btn btn-success mr-1 mt-1">
+                                Approve
+                            </span>
+
+                            <span size="sm" @click="cancel(cancelRoute, item.id, canceltext, $event.target)"
+                                v-else-if="cancelRoute != '' && item.status!='reject'" class="btn btn-danger mr-1 mt-1">
+                            {{ canceltext.toUpperCase() }}
+                            </span> -->
+
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
 </template>
@@ -441,6 +507,14 @@ export default {
 </script>
 
 <style scoped>
+
+.dashboard-w1 {
+    background: #3f3186;
+    padding: 0 10px;
+    color: white;
+    height: 100px;
+    margin-bottom: 10px;
+}
 
 a.btn.btn--success.btn--shadow.btn-block.btn-lg {
     border: 1px solid;

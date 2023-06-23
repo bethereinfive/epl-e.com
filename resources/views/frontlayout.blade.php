@@ -10,7 +10,9 @@
     <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" >
     <link href="{{ asset('frontend/css/style1.css') }}" rel="stylesheet" >
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" >
-    <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet" >
+
+   <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.4.0/css/pro.min.css" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.1/css/all.min.css" integrity="sha512-ioRJH7yXnyX+7fXTQEKPULWkMn3CqMcapK0NNtCN8q//sW7ZeVFcbMJ9RvX99TwDg6P8rAH2IqUSt2TLab4Xmw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
@@ -24,7 +26,7 @@
 
         section#bigbgs {
     background: #3F8ED3;
-    padding-top: 180px;
+
     background-attachment: fixed;
     min-height: 100vh;
 }
