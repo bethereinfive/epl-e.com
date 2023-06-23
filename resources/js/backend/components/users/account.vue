@@ -65,16 +65,20 @@
                             <p>Invite</p>
                         </router-link></li>
 
-                    <li><a href="https://t.me/+iO84tmrv8JNkZTRl" target="_blank"><img :src="$asseturl+'frontend/img/Telegram.png'">
+                    <li v-if="settingss.telegroup"><a :href="settingss.telegroup" target="_blank"><img :src="$asseturl+'frontend/img/Telegram.png'">
                             <p>Official Telegram Group</p>
                         </a></li>
 
-                    <li><a href="https://t.me/DreamlandCustomersurvice" target="_blank"><img :src="$asseturl+'frontend/img/aGroup.jpeg'">
-                            <p>Customer Service 1</p></a>
+                    <li v-if="settingss.telesupport1"><a :href="settingss.telesupport1" target="_blank"><img :src="$asseturl+'frontend/img/aGroup.jpeg'">
+                            <p>Telegram channel</p></a>
                     </li>
 
-                    <li><a href="https://t.me/Dreamland_Millye" target="_blank"><img src="https://cdn5.vectorstock.com/i/1000x1000/01/69/businesswoman-character-avatar-icon-vector-12800169.jpg">
-                            <p>Customer Service 2</p></a>
+                    <li v-if="settingss.telesupport2"><a :href="settingss.telesupport2" target="_blank"><i class="fa-brands fa-telegram" style="font-size: 26px;color: #4CC85B;"></i>
+                            <p>Customer Service</p></a>
+                    </li>
+
+                    <li v-if="settingss.telesupport3"><a :href="settingss.telesupport3" target="_blank"><i class="fa-brands fa-whatsapp" style="font-size: 26px;color: #4CC85B;"></i>
+                            <p>Whatsapp Group</p></a>
                     </li>
 
 
