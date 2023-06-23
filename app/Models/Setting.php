@@ -11,6 +11,25 @@ class Setting extends Model
 
     protected $fillable = [
         'notice',
-        'a'
+        'popupNotice',
+        'new_regitration',
+        'refer_bonus',
+        'ref_count',
+        'a',
+        'min_deposit',
+        'telegroup',
+        'telesupport1',
+        'telesupport2',
+        'telesupport3',
+        'worktime',
+        'withdrawtext',
+        'recharagetext',
+        'slide1',
+        'slide2',
+        'slide3',
+        'slide4',
+        'bkash',
+        'nagad',
+        'rocket',
     ];
 }

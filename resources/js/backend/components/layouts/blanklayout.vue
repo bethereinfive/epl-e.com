@@ -9,7 +9,7 @@
 <section style="padding: 40px;"></section>
         <section id="menus">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row" style="    align-items: center;">
                     <div class="col-3 p-0" style="width: 20% !important;">
                         <div class="menu">
                             <router-link :to="{name:'Authuser'}">
@@ -31,7 +31,7 @@
                     <div class="col-3 p-0" style="width: 20% !important;">
                         <div class="menu">
                             <router-link :to="{name:'Usertask'}">
-                                <img :src="$asseturl+'frontend/img/Task.png'" alt="Home">
+                                <img :src="$asseturl+'frontend/img/Task.png'" style="height: 60px !important;" alt="Home">
                                 <img :src="$asseturl+'frontend/img/TaskA.png'" alt="Home" class="activeimg">
                                 <p>Tasks</p>
                             </router-link>

@@ -101,7 +101,7 @@ export default {
             mobileCode: null,
             form: {
                 country: null,
-                name: "New Customer",
+                name: "",
                 username: null,
                 mobile: null,
                 password: null,

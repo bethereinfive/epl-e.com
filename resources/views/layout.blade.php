@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>EPL-Earner e-commerce</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/img/logos.png') }}">
     <link rel="stylesheet" href="{{ asset('dashboard_asset/css/all.min.css') }}">
     {{-- <!-- Favicon -->
@@ -69,7 +69,7 @@
 
 
 
-<script src="{{ asset('js/backend.js?ver=1.0.5') }}"></script>
+<script src="{{ asset('js/backend.js?ver=1.0.6') }}"></script>
 
 
 

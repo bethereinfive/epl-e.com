@@ -2340,7 +2340,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       mobileCode: null,
       form: {
         country: null,
-        name: "New Customer",
+        name: "",
         username: null,
         mobile: null,
         password: null,

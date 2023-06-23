@@ -12,8 +12,8 @@
                 </div>
                 <form action="" class="link">
                     <div class="row">
-                        <input disabled type="url" v-model="ref">
-                        <input type="button" value="copy" class="copy" @click="copyref">
+                        <input disabled type="url" style="width:100% !important" v-model="ref">
+                        <!-- <input type="button" value="copy" class="copy" @click="copyref"> -->
                     </div>
                 </form>
 
