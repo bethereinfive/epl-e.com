@@ -60,9 +60,9 @@
                             Sign Up
                         </button>
                     </div>
-                    <div data-v-6daec649="" class="text-center p-t-90">
+                    <div data-v-6daec649="" class="text-center p-t-90" style="line-height: 35px;">
                         <p data-v-6daec649="" class="text69 text-white">Have You Account?</p>
-                        <router-link :to="{ name: '/login' }" data-v-6daec649="" class="text95 text-white">
+                        <router-link :to="{ name: '/login' }" data-v-6daec649="" class="text95 text-white" style="color: #fbff58 !important;">
                             Login
                         </router-link>
                     </div>

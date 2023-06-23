@@ -66,10 +66,10 @@
                         </router-link></li>
 
                     <li v-if="settingss.telegroup"><a :href="settingss.telegroup" target="_blank"><img :src="$asseturl+'frontend/img/Telegram.png'">
-                            <p>Official Telegram Group</p>
+                            <p>Telegram Group</p>
                         </a></li>
 
-                    <li v-if="settingss.telesupport1"><a :href="settingss.telesupport1" target="_blank"><img :src="$asseturl+'frontend/img/aGroup.jpeg'">
+                    <li v-if="settingss.telesupport1"><a :href="settingss.telesupport1" target="_blank"><img :src="$asseturl+'frontend/img/Telegram.png'">
                             <p>Telegram channel</p></a>
                     </li>
 

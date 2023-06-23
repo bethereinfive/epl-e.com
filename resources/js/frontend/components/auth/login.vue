@@ -31,9 +31,9 @@
                                             <span  v-else>Login</span>
                                         </button>
                                     </div>
-                                    <div data-v-c1501c16="" class="text-center p-t-90">
+                                    <div data-v-c1501c16="" class="text-center p-t-90" style="line-height: 35px;">
                                         <p data-v-c1501c16="" class="text69 text-white">No Account?</p>
-                                        <router-link :to="{name:'register'}" data-v-c1501c16=""  class="text95 text-white">
+                                        <router-link :to="{name:'register'}" data-v-c1501c16=""  class="text95 text-white" style="color: #fbff58 !important;">
                                             Register
                                         </router-link>
                                     </div>
