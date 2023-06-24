@@ -92,8 +92,8 @@ export default {
     },
     methods: {
         checkAmount(amount) {
-            if (amount > this.user.user.balance - Number(settingss.new_regitration)) {
-                Notification.customError(`You can't Withdraw ${amount}.Because your account balance is ${this.user.user.balance - Number(settingss.new_regitration)}`);
+            if (amount > (Number(this.user.user.balance) - Number(settingss.new_regitration))) {
+                Notification.customError(`You can't Withdraw ${amount}.Because your account balance is ${Number(this.user.user.balance) - Number(settingss.new_regitration)}`);
                 this.form.amount = '';
             } else {
                 this.form.amount = amount;
