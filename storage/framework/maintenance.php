@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>::Dream Land::</title>
+	<title>EPL-Earner e-commerce</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -66,7 +66,7 @@
 				</div>
 			</div> -->
 
-			<a href="https://t.me/+1L6orWV6BL9jN2E1" class="flex-c-m s1-txt2 size3 how-btn" style="color:white"  >
+			<a href="https://t.me/+7p9_WKG3Rv40OGRl" class="flex-c-m s1-txt2 size3 how-btn" style="color:white"  >
 			<img style="
   width: 36px;
   margin-right: 12px;
